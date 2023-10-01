@@ -3,16 +3,20 @@
     <div class="icono-hamburguesa" @click="toggleSidebar">
       <IconHbgMenu />
     </div>
-    <img
-      v-if="sidebarActivo"
-      class="imagen-perfil"
-      src="@/assets/yo.webp"
-      alt="It should be me!"
-    />
-    <div v-if="sidebarActivo" class="nombre-usuario">{{ nombreUsuario }}</div>
-    <div class="opcion-menu" v-for="opcion in opcionesMenu" :key="opcion.texto">
-      <component :is="opcion.icono" #icon></component>
-      <span v-if="sidebarActivo">{{ opcion.texto }}</span>
+    <div>
+      <img
+        class="imagen-perfil"
+        :class="{ 'show': sidebarActivo }"
+        src="@/assets/yo.webp"
+        alt="It should be me!"
+      />
+      <div v-if="sidebarActivo" class="nombre-usuario">{{ nombreUsuario }}</div>
+    </div>
+    <div>
+      <div class="opcion-menu" v-for="opcion in opcionesMenu" :key="opcion.texto">
+        <component :is="opcion.icono" #icon></component>
+        <span v-if="sidebarActivo">{{ opcion.texto }}</span>
+      </div>
     </div>
   </section>
 </template>
@@ -54,14 +58,20 @@ export default {
 <style scoped>
 .sidebar {
   width: 60px;
+  height: 100vh;
   background-color: #333;
   color: #fff;
-  transition: width 0.3s;
+  transition: 0.3s ease;
   overflow: hidden;
+  display: grid;
 }
 
 .sidebar.activo {
-  widows: 250px;
+  width: 250px;
+}
+
+.sidebar.activo .icono-hamburguesa {
+  justify-content: right;
 }
 
 .icono-hamburguesa {
@@ -74,10 +84,16 @@ export default {
 }
 
 .imagen-perfil {
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin: 20px auto;
+  display: block;
+}
+
+.imagen-perfil.show {
+  width: 100px;
+  height: 100px;
   display: block;
 }
 
@@ -90,12 +106,15 @@ export default {
 .opcion-menu {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.opcion-menu svg {
+.sidebar.activo .opcion-menu {
+  justify-content: flex-start;
+}
+.sidebar.activo .opcion-menu svg {
   margin-right: 10px;
 }
 </style>
