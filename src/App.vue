@@ -1,15 +1,15 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import SideBarMenu from './components/SideBarMenu.vue'
 </script>
 
 <template>
-  <div class="app">
+  <div class="app"> <!-- se agrega la clase app -->
     <header>
-      <SideBarMenu nombreUsuario="Rosendo" />
+      <SideBarMenu nombreUsuario="Rosendo" /> <!-- se agrega el componente SideBarMenu -->
     </header>
     <main>
-      <RouterView />
+      <RouterView /> <!-- se agrega el componente RouterView, lugar donde se renderizaran los demas components -->
     </main>
   </div>
 </template>

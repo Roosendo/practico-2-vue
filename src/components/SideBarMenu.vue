@@ -1,6 +1,7 @@
 <template>
+  <!-- se agrega la clase activo solo si sidebarActivo es true -->
   <section class="sidebar" :class="{ 'activo': sidebarActivo }">
-    <div class="icono-hamburguesa" @click="toggleSidebar">
+    <div class="icono-hamburguesa" @click="toggleSidebar"> <!-- se agrega el evento click -->
       <IconHbgMenu />
     </div>
     <div>
@@ -9,10 +10,13 @@
         :class="{ 'show': sidebarActivo }"
         src="@/assets/yo.webp"
         alt="It should be me!"
-      />
+      /> <!-- se agrega la clase show solo si sidebarActivo es true -->
       <div v-if="sidebarActivo" class="nombre-usuario">{{ nombreUsuario }}</div>
     </div>
-    <div class="container-icons">
+    <div class="container-icons"> <!-- contenedor de los iconos -->
+      <!-- estructura de cada icono con su svg y texto
+      reactivo dependiendo de sidebarActivo
+      router-link es para las rutas, teniendo el 'to' para saber a donde redirigir -->
       <router-link to="/" class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -20,7 +24,7 @@
           <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
           <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
         </svg>
-        <span v-if="sidebarActivo">Home</span>
+        <span v-if="sidebarActivo">Home</span> <!-- se agrega el texto solo si sidebarActivo es true -->
       </router-link>
       <router-link to="/reports" class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -47,7 +51,7 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router'
+import { RouterLink } from 'vue-router' // se importa RouterLink para las rutas
 import IconHbgMenu from './icons/IconHbgMenu.vue'
 
 export default {
@@ -56,16 +60,16 @@ export default {
   },
   data() {
     return {
-      sidebarActivo: false
+      sidebarActivo: false // se agrega la variable sidebarActivo
     }
   },
   components: {
-    IconHbgMenu
+    IconHbgMenu // se agrega el componente IconHbgMenu
   },
   methods: {
     toggleSidebar() {
       this.sidebarActivo = !this.sidebarActivo
-    }
+    } // se agrega el metodo toggleSidebar, que con matematica booleana maneja el cambio a true o false
   }
 }
 </script>
