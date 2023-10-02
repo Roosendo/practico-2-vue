@@ -67,7 +67,7 @@ export default {
 }
 
 .sidebar.activo {
-  width: 250px;
+  width: 200px;
 }
 
 .sidebar.activo .icono-hamburguesa {
@@ -109,10 +109,16 @@ export default {
   justify-content: center;
   padding: 10px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .sidebar.activo .opcion-menu {
   justify-content: flex-start;
+  margin-left: 7px;
+}
+
+.sidebar.activo .opcion-menu:hover svg {
+  transform: scale(1.075);
 }
 .sidebar.activo .opcion-menu svg {
   margin-right: 10px;
