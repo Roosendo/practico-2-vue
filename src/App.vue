@@ -20,6 +20,10 @@ import SideBarMenu from './components/SideBarMenu.vue'
   align-items: center;
 }
 
+main {
+  padding: 50px;
+}
+
 nav {
   width: 100%;
   font-size: 12px;
