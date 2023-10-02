@@ -62,10 +62,7 @@ export default {
     }
   },
   components: {
-    IconHbgMenu,
-    IconHome,
-    IconReport,
-    IconFire
+    IconHbgMenu
   },
   methods: {
     toggleSidebar() {
