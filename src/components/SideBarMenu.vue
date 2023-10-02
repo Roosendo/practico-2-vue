@@ -12,8 +12,8 @@
       />
       <div v-if="sidebarActivo" class="nombre-usuario">{{ nombreUsuario }}</div>
     </div>
-    <div>
-      <div class="opcion-menu">
+    <div class="container-icons">
+      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
@@ -22,7 +22,7 @@
         </svg>
         <span v-if="sidebarActivo">Home</span>
       </div>
-      <div class="opcion-menu">
+      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
@@ -35,7 +35,7 @@
         </svg>
         <span v-if="sidebarActivo">Home</span>
       </div>
-      <div class="opcion-menu">
+      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flame" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M12 12c2 -2.96 0 -7 -1 -8c0 3.038 -1.773 4.741 -3 6c-1.226 1.26 -2 3.24 -2 5a6 6 0 1 0 12 0c0 -1.532 -1.056 -3.94 -2 -5c-1.786 3 -2.791 3 -4 2z"></path>
@@ -74,7 +74,8 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 60px;
+  width: calc(100vw - 95vw);
+  min-width: 60px;
   height: 100vh;
   background-color: #333;
   color: #fff;
@@ -84,7 +85,8 @@ export default {
 }
 
 .sidebar.activo {
-  width: 200px;
+  width: calc(100vw - 85vw);
+  min-width: 150px;
 }
 
 .sidebar.activo .icono-hamburguesa {
@@ -120,10 +122,20 @@ export default {
   margin-bottom: 20px;
 }
 
+.container-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
 .opcion-menu {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: calc(100% - 15px);
+  border-radius: 11px;
   padding: 10px;
   cursor: pointer;
   transition: 0.2s ease;
@@ -131,11 +143,14 @@ export default {
 
 .sidebar.activo .opcion-menu {
   justify-content: flex-start;
-  margin-left: 7px;
 }
 
+
+.sidebar.activo .opcion-menu.active:hover {
+  background-color: #444;
+}
 .sidebar.activo .opcion-menu:hover svg {
-  transform: scale(1.075);
+  transform: scale(1.07);
 }
 .sidebar.activo .opcion-menu svg {
   margin-right: 10px;
