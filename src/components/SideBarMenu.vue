@@ -13,7 +13,7 @@
       <div v-if="sidebarActivo" class="nombre-usuario">{{ nombreUsuario }}</div>
     </div>
     <div class="container-icons">
-      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
+      <router-link to="/" class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
@@ -21,8 +21,8 @@
           <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
         </svg>
         <span v-if="sidebarActivo">Home</span>
-      </div>
-      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
+      </router-link>
+      <router-link to="/reports" class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
@@ -33,23 +33,21 @@
           <path d="M8 11h4"></path>
           <path d="M8 15h3"></path>
         </svg>
-        <span v-if="sidebarActivo">Home</span>
-      </div>
-      <div class="opcion-menu" :class="{ 'active': sidebarActivo }">
+        <span v-if="sidebarActivo">Reports</span>
+      </router-link>
+      <router-link to="/about" class="opcion-menu" :class="{ 'active': sidebarActivo }">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flame" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M12 12c2 -2.96 0 -7 -1 -8c0 3.038 -1.773 4.741 -3 6c-1.226 1.26 -2 3.24 -2 5a6 6 0 1 0 12 0c0 -1.532 -1.056 -3.94 -2 -5c-1.786 3 -2.791 3 -4 2z"></path>
         </svg>
-        <span v-if="sidebarActivo">Home</span>
-      </div>
-      <div class="opcion-menu">
-
-      </div>
+        <span v-if="sidebarActivo">About</span>
+      </router-link>
     </div>
   </section>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 import IconHbgMenu from './icons/IconHbgMenu.vue'
 
 export default {

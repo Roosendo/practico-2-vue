@@ -1,23 +1,23 @@
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 import SideBarMenu from './components/SideBarMenu.vue'
 </script>
 
 <template>
-  <header>
-    <SideBarMenu nombreUsuario="Rosendo" />
-  </header>
+  <div class="app">
+    <header>
+      <SideBarMenu nombreUsuario="Rosendo" />
+    </header>
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app {
+  display: flex;
+  align-items: center;
 }
 
 nav {
